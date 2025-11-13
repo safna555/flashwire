@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <style>
+    /* Reset some defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .register-container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff4d4d;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e60000;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    a {
+      color: #ff4d4d;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .messages {
+      margin-bottom: 15px;
+    }
+
+    .messages p {
+      text-align: center;
+      color: red;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>Register</h2>
+
+    <div class="messages">
+      {% if messages %}
+        {% for msg in messages %}
+          <p>{{ msg }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="text" name="userid" placeholder="User ID" required>
+      <input type="text" name="phone" placeholder="Phone Number" required>
+      <button type="submit">Register</button>
+    </form>
+
+    <p>Already registered? <a href="{% url 'login' %}">Login</a></p>
+  </div>
+</body>
+</html>

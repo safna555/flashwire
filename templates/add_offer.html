@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Offer - Flash Fireworks</title>
+  <style>
+    body {
+      font-family:'Poppins',sans-serif;
+      background:#f5f5f5;
+      padding:50px;
+      text-align:center;
+    }
+    .form-container {
+      background:#fff;
+      padding:30px;
+      max-width:500px;
+      margin:auto;
+      border-radius:15px;
+      box-shadow:0px 8px 20px rgba(0,0,0,0.15);
+    }
+    input, textarea {
+      width:100%;
+      padding:10px;
+      margin:10px 0;
+      border-radius:5px;
+      border:1px solid #ccc;
+      font-size:16px;
+    }
+    .btn {
+      background:#f7b733;
+      color:#000;
+      padding:12px 25px;
+      border:none;
+      border-radius:8px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .btn:hover { background:#fc4a1a; color:#fff; }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Add New Offer</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="text" name="title" placeholder="Offer Title" required>
+      <textarea name="description" placeholder="Offer Description" required></textarea>
+      <input type="number" name="discount" placeholder="Discount (%)" required>
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit" class="btn">Add Offer</button>
+    </form>
+  </div>
+
+</body>
+</html>

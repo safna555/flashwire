@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flash Fireworks - Offers</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { background:#f5f5f5; color:#000; }
+
+    /* Navbar */
+    .navbar {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 30px;
+      background:linear-gradient(to right,#f7b733,#fc4a1a);
+      color:#fff;
+      flex-wrap: wrap;
+    }
+    .navbar h1 { font-size:26px; font-weight:bold; }
+    .nav-links { list-style:none; display:flex; flex-wrap:wrap; }
+    .nav-links li { margin:0 12px; }
+    .nav-links a { text-decoration:none; color:#fff; padding:8px 14px; border-radius:5px; transition:0.3s; }
+    .nav-links a:hover { background:rgba(255,255,255,0.3); }
+
+    /* Page heading */
+    .page-title {
+      text-align:center;
+      padding:40px 20px;
+      font-size:36px;
+      color:#fc4a1a;
+    }
+
+    /* Offers grid */
+    .grid-container {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      padding:20px 40px 60px 40px;
+    }
+    .grid-item { display:flex; justify-content:center; }
+
+    /* Offer card */
+    .card {
+      width: 250px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align:center;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 12px 25px rgba(0,0,0,0.2);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card-content { padding: 15px; }
+    .card-content h3 { color: #fc4a1a; margin-bottom:5px; }
+    .card-content p { color:#333; font-size:14px; margin-bottom:10px; }
+    .card-content .btn {
+      display:inline-block;
+      text-decoration:none;
+      color:#fff;
+      background:#f7b733;
+      padding:8px 14px;
+      border-radius:5px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+    .card-content .btn:hover { background:#fc4a1a; }
+
+    .footer { height:50px; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>Flash Fireworks</h1>
+    <ul class="nav-links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'add_cracker' %}">Add Cracker</a></li>
+      <li><a href="{% url 'offers' %}">Offers</a></li>
+      <li><a href="{% url 'login' %}">Login</a></li>
+      <li><a href="{% url 'register' %}">Register</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Page Title -->
+  <div class="page-title">Special Offers</div>
+
+  <!-- Page Title and Add Offer Button -->
+<div style="display:flex; justify-content:space-between; align-items:center; padding:20px 40px; flex-wrap:wrap;">
+  <h2 style="color:#fc4a1a;">Special Offers</h2>
+  <a href="{% url 'add_offer' %}" class="btn">Add Offer</a>
+</div>
+
+
+  <!-- Offers Grid -->
+  <div class="grid-container">
+    {% for offer in offers %}
+    <div class="grid-item">
+      <div class="card">
+        <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+        <div class="card-content">
+          <h3>{{ offer.title }}</h3>
+          <p>{{ offer.description|truncatechars:80 }}</p>
+          <span>Discount: {{ offer.discount }}%</span><br><br>
+          <a href="#" class="btn">Grab Offer</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <p style="text-align:center;">No offers available right now!</p>
+    {% endfor %}
+  </div>
+
+  <div class="footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Cracker</title>
+  <style>
+    /* Reset and font */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .cracker-container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #f7b733;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #fc4a1a;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #f7b733;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #fc4a1a;
+    }
+
+    .messages {
+      margin-bottom: 15px;
+    }
+
+    .messages p {
+      color: red;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cracker-container">
+    <h2>Add New Cracker</h2>
+
+    <div class="messages">
+      {% if messages %}
+        {% for msg in messages %}
+          <p>{{ msg }}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="text" name="name" placeholder="Cracker Name" required>
+      <input type="number" name="price" placeholder="Price" step="0.01" required>
+      <textarea name="description" placeholder="Description"></textarea>
+      <input type="file" name="image" accept="image/*" required>
+      <button type="submit">Add Cracker</button>
+    </form>
+
+    <a href="{% url 'home' %}">Back to Home</a>
+  </div>
+
+</body>
+</html>

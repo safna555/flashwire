@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flash Fireworks - Home</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #fefefe;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: linear-gradient(to right, #f7b733, #fc4a1a);
+      color: #fff;
+      flex-wrap: wrap;
+    }
+
+    .navbar h1 {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-links li {
+      margin: 0 12px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Welcome Section */
+    .welcome-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, #fff7f2, #fff);
+      padding: 60px 50px;
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+      max-width: 1200px;
+    }
+
+    .welcome-text {
+      flex: 1;
+      min-width: 400px;
+      padding-right: 30px;
+      text-align: center;
+    }
+
+    .welcome-text h2 {
+      font-size: 50px;
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .welcome-text h2 span {
+      color: #fc4a1a;
+      font-weight: 800;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .welcome-text p {
+      font-size: 18px;
+      color: #555;
+      margin-top: 15px;
+      line-height: 1.6;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .welcome-text .btn {
+      background: #fc4a1a;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 25px;
+      transition: 0.3s;
+    }
+
+    .welcome-text .btn:hover {
+      background: #f7931e;
+      transform: scale(1.05);
+    }
+
+    .welcome-image {
+      flex: 1;
+      min-width: 500px;
+      text-align: center;
+    }
+
+    .welcome-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .welcome-image img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Static image section */
+    .image-section {
+      width: 100%;
+      margin: 30px 0;
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .image-section img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      border-radius: 10px;
+      opacity: 0.9;
+    }
+
+    .image-section p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #555;
+      margin-top: 15px;
+    }
+
+    /* Crackers Grid */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      padding: 40px;
+    }
+
+    .grid-item {
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      width: 250px;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      color: #fc4a1a;
+      margin-bottom: 5px;
+    }
+
+    .card-content span {
+      font-weight: bold;
+      color: #333;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      color: #555;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .card-content .btn {
+      text-decoration: none;
+      color: #fff;
+      background: #fc4a1a;
+      padding: 8px 14px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .card-content .btn:hover {
+      background: #f7931e;
+    }
+
+    /* Footer */
+    .footer {
+      background: #fff8f0;
+      color: #333;
+      padding: 40px 20px;
+      text-align: center;
+      margin-top: 40px;
+      border-top: 1px solid #f1e6da;
+    }
+
+    .footer h3 {
+      color: #fc4a1a;
+      margin-bottom: 10px;
+    }
+
+    .footer p {
+      margin: 5px 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .footer p.description {
+      font-size: 14px;
+      margin-top: 15px;
+      line-height: 1.6;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer p.copy {
+      font-size: 12px;
+      margin-top: 10px;
+      color: #999;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .welcome-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .welcome-text {
+        padding-right: 0;
+      }
+
+      .welcome-image img {
+        margin-top: 25px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>Flash Fireworks</h1>
+    <ul class="nav-links">
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'add_cracker' %}">Add Cracker</a></li>
+      <li><a href="{% url 'offers' %}">Offers</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+      <li><a href="{% url 'register' %}">Register</a></li>
+      <li><a href="{% url 'login' %}">Login</a></li>
+    </ul>
+  </div>
+
+  <!-- Welcome Section -->
+  <section class="welcome-section">
+    <div class="welcome-text">
+      <h2>Welcome to<br><span>Flash Fireworks 🎆</span></h2>
+      <p>Celebrate your special moments with <strong>Flash Fireworks</strong> — your trusted brand for dazzling, safe, and colorful fireworks that brighten every celebration!</p>
+      <a href="{% url 'add_cracker' %}" class="btn">Add Cracker</a>
+    </div>
+    <div class="welcome-image">
+      <img src="images/istockphoto-2175661437-612x612.jpg" alt="Fireworks Image">
+    </div>
+  </section>
+
+  <!-- Static Image Section -->
+  <div class="image-section">
+    <img src="images/familfireworks.jpg" alt="Fireworks Celebration">
+    <p>Experience the magic of lights and colors with our top-quality fireworks. Perfect for every celebration, our fireworks ensure a safe and spectacular show for you and your loved ones.</p>
+  </div>
+
+  <!-- Crackers Grid -->
+  <div class="grid-container">
+    {% for cracker in crackers %}
+    <div class="grid-item">
+      <div class="card">
+        <img src="{{ cracker.image.url }}" alt="{{ cracker.name }}">
+        <div class="card-content">
+          <h3>{{ cracker.name }}</h3>
+          <span>Price: ₹{{ cracker.price }}</span>
+          <p>{{ cracker.description|truncatechars:80 }}</p>
+          <a href="{% url 'view_cracker' cracker.id %}" class="btn">View More</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <p>No crackers available yet!</p>
+    {% endfor %}
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <h3>Contact Us</h3>
+    <p>Phone: +91 9876543210 | Email: info@flashfireworks.com</p>
+    <p>Address: 123 Celebration Street, Cochin, Kerala</p>
+    <p class="description">
+      Flash Fireworks brings joy to every celebration with our safe and high-quality crackers.
+      Brighten your festivals, parties, and events with dazzling fireworks that create unforgettable memories.
+    </p>
+    <p class="copy">&copy; 2025 Flash Fireworks. All rights reserved.</p>
+  </div>
+
+</body>
+</html>

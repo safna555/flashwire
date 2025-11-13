@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Cracker</title>
+  <style>
+    body { font-family:'Poppins', sans-serif; text-align:center; padding:50px; background:#f9f9f9; }
+    img { width:400px; height:300px; object-fit:cover; border-radius:10px; }
+  </style>
+</head>
+<body>
+
+  <h2>{{ cracker.name }}</h2>
+  <p>Price: ₹{{ cracker.price }}</p>
+  <img src="{{ cracker.image.url }}" alt="{{ cracker.name }}"><br>
+  <p>{{ cracker.description }}</p>
+
+  <br>
+  <a href="{% url 'home' %}">Back to Home</a>
+
+</body>
+</html>
